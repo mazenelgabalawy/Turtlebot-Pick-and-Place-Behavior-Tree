@@ -8,6 +8,8 @@ import py_trees
 class LetObject(py_trees.behaviour.Behaviour):
     def __init__(self, name):
         super(LetObject, self).__init__(name)
+        self.blackboard = self.attach_blackboard_client(name=self.name)
+        self.blackboard.register_key("Iterator", access=py_trees.common.Access.WRITE)
 
     def setup(self):
         self.logger.debug("  %s [LetObject::setup()]" % self.name)
@@ -28,6 +30,8 @@ class LetObject(py_trees.behaviour.Behaviour):
             )
             resp = self.server(TriggerRequest())
             if resp.success:
+                self.logger.debug("Updating Iterator".format(self.name))
+                self.blackboard.Iterator = self.blackboard.get("Iterator") + 1
                 return py_trees.common.Status.SUCCESS
             else:
                 return py_trees.common.Status.FAILURE

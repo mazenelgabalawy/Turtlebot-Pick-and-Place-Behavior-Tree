@@ -12,4 +12,8 @@
         args="--perspective-file $(find turtlebot_online_path_planning)/config/kobuki_cmd.perspective">
         <remap from="robot_description" to="/turtlebot/robot_description"/>
     </node>
+
+    <include file="$(find pick_up_objects_task)/launch/pick_up_objects_task.launch"/>
+
+    
 </launch>

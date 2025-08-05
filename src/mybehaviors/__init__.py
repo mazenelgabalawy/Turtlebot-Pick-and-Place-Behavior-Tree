@@ -3,3 +3,9 @@ from .FollowPath import *
 from .CheckObject import *
 from .GetObject import *
 from .LetObject import *
+from .SetGoalNextBall import *
+from .SetGoalDropPoint import *
+from .PlanSubTree import *
+from .PlanAndFollow import *
+from .ChangePose import *
+from .CorrectOrientation import *
